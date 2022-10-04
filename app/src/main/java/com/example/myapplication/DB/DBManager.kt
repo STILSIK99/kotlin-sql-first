@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
+import android.provider.BaseColumns
 
 class DBManager(val context: Context) {
     val myDBHelper = DBHelper(context)
@@ -22,17 +23,26 @@ class DBManager(val context: Context) {
     }
 
     @SuppressLint("Range")
-    fun readDBData() : ArrayList<String>{
-        val dataList = ArrayList<String>()
+    fun readDBData() : ArrayList<Subject>{
+        val dataList = ArrayList<Subject>()
 
         val cursor = db?.query(MyDbName.TABLE_NAME, null, null,
             null, null, null, null)
         while(cursor?.moveToNext()!!){
-            val dataText = cursor.getString(cursor.getColumnIndex(MyDbName.COLUMN_NAME_TITLE))
-            dataList.add(dataText.toString())
+            val title = cursor.getString(cursor.getColumnIndex(MyDbName.COLUMN_NAME_TITLE))
+            val content = cursor.getString(cursor.getColumnIndex(MyDbName.COLUMN_NAME_CONTENT))
+            val id = cursor.getInt(cursor.getColumnIndex(BaseColumns._ID))
+            dataList.add(Subject(id, title, content))
+//            dataList.add(dataText.toString())
         }
         cursor.close()
         return dataList
+    }
+
+
+    fun deleteDBData(id : Int){
+        val request = "delete from ${MyDbName.TABLE_NAME} where ${BaseColumns._ID} = $id"
+        db?.execSQL(request)
     }
 
     fun closeDB(){

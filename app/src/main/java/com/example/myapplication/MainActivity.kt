@@ -3,6 +3,7 @@ package com.example.myapplication
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import com.example.myapplication.DB.DBManager
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -36,7 +37,13 @@ class MainActivity : AppCompatActivity() {
         textView.text = ""
         val dataList = db_manager.readDBData()
         for(item in dataList){
-            textView.append(item + "\n")
+            textView.append(item.toString() + "\n")
         }
+    }
+
+    fun delete(view : View){
+        db_manager.deleteDBData(4)
+        updateView()
+        Toast.makeText(this, "Deleted", Toast.LENGTH_SHORT).show()
     }
 }
