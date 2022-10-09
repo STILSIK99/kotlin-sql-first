@@ -4,18 +4,18 @@ import android.os.Parcel
 import android.os.Parcelable
 import kotlin.math.min
 
-class Subject(val id: Int, val title: String, val content: String) : Parcelable {
+class Subject(val title: String, val content: String, val id: Int = 0) : Parcelable {
     constructor(parcel: Parcel) : this(
-        parcel.readInt(),
         parcel.readString() ?: "",
-        parcel.readString() ?: ""
+        parcel.readString() ?: "",
+        parcel.readInt()
     ) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeInt(id)
         parcel.writeString(title)
         parcel.writeString(content)
+        parcel.writeInt(id)
     }
 
     override fun describeContents(): Int {

@@ -2,4 +2,8 @@
     <string name="app_name">My Application</string>
     <string name="itemTitle">Title</string>
     <string name="itemContent">Content</string>
+    <string name="addActivity">Creating new subject</string>
+    <string name="add_titleHint">Название</string>
+    <string name="add_contentHint">Описание</string>
+    <string name="empty">Список пуст</string>
 </resources>

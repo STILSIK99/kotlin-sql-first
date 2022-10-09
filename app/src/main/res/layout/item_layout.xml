@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="60dp"
+    android:layout_margin="5dp"
+    android:background="#9BAF99"
     android:orientation="vertical"
+    android:paddingLeft="8dp"
     android:paddingTop="4dp"
     android:paddingEnd="4dp"
-    android:paddingLeft="8dp"
     android:paddingRight="8dp"
+    android:radius="10dp"
     >
-
     <TextView
         android:id="@+id/itemTitle"
         style="@style/Base.TextAppearance.AppCompat.Headline"
         android:layout_width="match_parent"
         android:layout_height="15dp"
+        android:layout_margin="5dp"
         android:layout_weight="1"
         android:editable="false"
         android:singleLine="true"
         android:text="@string/itemTitle"
-        android:textColor="@color/itemTop"
+        android:textColor="#FFFFFF"
         android:textSize="14dp" />
 
 
@@ -29,11 +31,12 @@
         style="@style/Base.TextAppearance.AppCompat.Subhead"
         android:layout_width="match_parent"
         android:layout_height="12dp"
+        android:layout_margin="5dp"
         android:layout_weight="1"
         android:editable="false"
         android:singleLine="true"
         android:text="@string/itemContent"
-        android:textColor="@color/itemBottom"
+        android:textColor="#EFF1DE"
         android:textSize="11dp"
         android:textStyle="italic" />
 

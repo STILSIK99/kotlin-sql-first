@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -8,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.DB.DBManager
+import com.example.myapplication.DB.Subject
 import com.example.myapplication.DB.SubjectAdapter
 import com.example.myapplication.DB.SubjectViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -20,8 +22,28 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         db_manager.openDB()
-        subViewModel.subjectList.value = db_manager.readDBData()
 
+        updateView()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        updateView()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        db_manager.closeDB()
+    }
+
+    fun addSubject(view : View){
+        val addIntent = Intent(this,  MainActivity2::class.java)
+        startActivity(addIntent)
+        subViewModel.updateListSubject()
+    }
+
+    fun updateView(){
+        subViewModel.subjectList.value = db_manager.readDBData()
         val adapter = SubjectAdapter()
         recycleView.layoutManager = LinearLayoutManager(this)
         recycleView.adapter = adapter
@@ -30,34 +52,6 @@ class MainActivity : AppCompatActivity() {
                 adapter.refreshSubjects(it)
             }
         })
-    }
-
-    override fun onResume() {
-        super.onResume()
-        updateView()
-    }
-
-    fun onClickSave(view : View){
-        db_manager.insertToDB(edTitle.text.toString(), edContent.text.toString())
-        updateView()
-        edTitle.text.clear()
-        edContent.text.clear()
-        subViewModel.updateListSubject()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        db_manager.closeDB()
-    }
-
-    fun updateView(){
-//        textView.text = ""
-//        val dataList = db_manager.readDBData()
-//        for(item in dataList){
-//            textView.append(item.toString() + "\n")
-//        }
-
-
     }
 
     fun delete(view : View){

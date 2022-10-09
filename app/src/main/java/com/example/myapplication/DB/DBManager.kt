@@ -11,7 +11,9 @@ class DBManager(val context: Context) {
     var db: SQLiteDatabase? = null
 
     fun openDB(){
-        db = myDBHelper.writableDatabase
+        db.let{
+            db = myDBHelper.writableDatabase
+        }
     }
 
     fun insertToDB(title: String, content: String){
@@ -32,8 +34,7 @@ class DBManager(val context: Context) {
             val title = cursor.getString(cursor.getColumnIndex(MyDbName.COLUMN_NAME_TITLE))
             val content = cursor.getString(cursor.getColumnIndex(MyDbName.COLUMN_NAME_CONTENT))
             val id = cursor.getInt(cursor.getColumnIndex(BaseColumns._ID))
-            dataList.add(Subject(id, title, content))
-//            dataList.add(dataText.toString())
+            dataList.add(Subject(title, content, id))
         }
         cursor.close()
         return dataList
