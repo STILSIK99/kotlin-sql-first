@@ -9,7 +9,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.DB.DBManager
-import com.example.myapplication.DB.Subject
 import com.example.myapplication.DB.SubjectAdapter
 import com.example.myapplication.DB.SubjectViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -37,14 +36,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun addSubject(view : View){
-        val addIntent = Intent(this,  MainActivity2::class.java)
+        val addIntent = Intent(this,  SubjectActivity::class.java)
         startActivity(addIntent)
         subViewModel.updateListSubject()
     }
 
     fun updateView(){
         subViewModel.subjectList.value = db_manager.readDBData()
-        val adapter = SubjectAdapter()
+        val adapter = SubjectAdapter(this)
         recycleView.layoutManager = LinearLayoutManager(this)
         recycleView.adapter = adapter
         subViewModel.getListSubjects().observe(this, Observer {
