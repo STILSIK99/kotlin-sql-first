@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Записная книжка</string>
     <string name="itemTitle">Title</string>
     <string name="itemContent">Content</string>
     <string name="addActivity">Creating new subject</string>

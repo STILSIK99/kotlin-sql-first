@@ -10,9 +10,9 @@
     <EditText
 
         android:id="@+id/edContent"
-        android:layout_width="300dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="112dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/edit_style"
         android:ems="10"
         android:gravity="top|left"
@@ -21,27 +21,30 @@
         android:padding="8dp"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="@+id/edTitle"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/edTitle"
         app:layout_constraintTop_toBottomOf="@+id/edTitle"
+        app:layout_constraintVertical_bias="1.0"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/edTitle"
-        android:layout_width="300dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="164dp"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_margin="15dp"
         android:background="@drawable/edit_style"
         android:ems="10"
         android:hint="@string/add_titleHint"
         android:inputType="text|textCapSentences"
         android:padding="8dp"
-        android:textColor="#FFFFFF"
 
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
         tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
     <TextView
@@ -60,12 +63,20 @@
         android:id="@+id/button_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:clickable="true"
         android:onClick="onClickAdd"
         app:backgroundTint="#71A39F"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_archive" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

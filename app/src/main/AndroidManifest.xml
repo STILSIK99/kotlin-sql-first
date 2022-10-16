@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.myapplication">
 
-    <application
+<application
         android:allowBackup="true"
         android:appComponentFactory="android.core.app.CoreComponentFactory"
         android:dataExtractionRules="@xml/data_extraction_rules"
